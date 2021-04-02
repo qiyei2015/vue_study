@@ -29,6 +29,13 @@
 			<button type="button" v-on:click="reverse()">反转消息</button>
 		</div>
 		
+		<div id="app-6">
+			<ol>
+				<todo-item v-for="item in list" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+			</ol>
+		</div>
+		
+		
 		<script type="text/javascript">
 			var app = new Vue({
 				el: "#app",
@@ -73,6 +80,23 @@
 				}
 			})
 			
+			
+			Vue.component('todo-item',{
+				//接受传递参数
+				props:['todo'],
+				template:'<li>{{todo.text}}</li>'
+			})
+			
+			let app6 = new Vue({
+				el:'#app-6',
+				data:{
+					list:[
+						{id:0,text:"shucai"},
+						{id:1,text:"shuiguo"},
+						{id:2,text:"huacai"}
+					]
+				}
+			})
 		</script>
 	</body>
 </html>
